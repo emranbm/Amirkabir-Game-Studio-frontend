@@ -1,0 +1,29 @@
+{
+  "name": "amirkabir-game-studio",
+  "version": "0.0.1",
+  "description": "A game studio.",
+  "main": "none",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emranbm/Amirkabir-Game-Studio.git"
+  },
+  "keywords": [
+    "amirkabir",
+    "game",
+    "studio",
+    "aut"
+  ],
+  "author": "Emran BatmanGhelich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emranbm/Amirkabir-Game-Studio/issues"
+  },
+  "homepage": "https://github.com/emranbm/Amirkabir-Game-Studio#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "owl.carousel": "^2.2.0"
+  }
+}
