@@ -47,3 +47,16 @@ div.owl-carousel {
     right: 25%;
     top: 7pt;
 }
+
+#top-left-span {
+    position: absolute;
+    left: 30%;
+    top: 7pt;
+}
+
+#top-left-span a{
+    margin-left: 15pt;
+}
+#top-left-span button{
+    width: 80pt;
+}

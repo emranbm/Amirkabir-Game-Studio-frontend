@@ -1,0 +1,31 @@
+/* 	css rules for login.html page
+	author: 1111111;
+	date: dd-mm-yy;
+	version: 0.1;
+*/
+
+.center-box{
+    padding: 0px;
+}
+
+.center-box-content{
+    padding: 15px;
+}
+
+.button {
+    background-color: #E03A72;
+}
+
+.center-box-footer{
+    background-color: #dfdfdf;
+    text-align: center;
+    padding: 15px;
+}
+
+#fotgot-pass-link {
+    display: table;
+    margin: 0 auto;
+    color: #5e5e5c;
+    font-size: 14px;
+    margin-top: 10px;
+}

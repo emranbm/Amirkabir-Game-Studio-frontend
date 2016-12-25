@@ -1,0 +1,88 @@
+/* 	global css rules in hw2 pages like font-family (@font-face), boxes, and login-register inputs
+	author: 1111111;
+	date: dd-mm-yy;
+	version: 0.1;
+*/
+
+body {
+    background-color: #4175A5;
+    font-size: 16px;
+}
+
+header {
+    width: 100%;
+    background-color: #474E54;
+    font-family: Shabnam;
+}
+
+.header-div {
+    align-content: center;
+    width: 49%;
+    display: inline-block;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.header-div * {
+    display: table;
+    margin: 0 auto;
+}
+
+.center-box {
+    padding: 20px;
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #F5F5F5;
+    font-family: Shabnam;
+    margin-top: 4%;
+    color: #797977;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.71);
+}
+
+.center-box-row {
+    color: #5e5e5c;
+}
+
+.title {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+.text-box {
+    width: 80%;
+    margin-top: 15px;
+    text-align: right;
+    padding: 7px;
+    background-color: inherit;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px #A5A5A5;
+    font-family: inherit;
+}
+
+.text-box:focus {
+    outline-width: 0px;
+    border-bottom: solid 1px #E03A72;
+}
+
+input[type="checkbox"] {
+    margin-top: 15px;
+}
+
+.button {
+    font-family: inherit;
+    display: table;
+    margin: 0 auto;
+    width: 95%;
+    background-color: #3473DC;
+    border: none;
+    color: white;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
