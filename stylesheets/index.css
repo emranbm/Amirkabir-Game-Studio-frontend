@@ -33,21 +33,16 @@ div.owl-carousel {
     margin-bottom: 30pt;
 }
 
-
-#details-content, #trailer-div{
+#details-content {
     color: #b4b5ba;
 }
-#game-pge-btn{
+
+#game-pge-btn {
     margin-left: 40pt;
     font-size: 12pt;
 }
 
-#trailer-div:hover{
-    color: white;
-    cursor: pointer;
-}
-
-#top-right-span{
+#top-right-span {
     position: absolute;
     right: 25%;
     top: 7pt;
