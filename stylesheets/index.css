@@ -7,7 +7,7 @@
     height: auto;
 }
 
-div.owl-carousel {
+#main-carousel {
     position: absolute;
     bottom: 0px;
 }
@@ -54,9 +54,45 @@ div.owl-carousel {
     top: 7pt;
 }
 
-#top-left-span a{
+#top-left-span a {
     margin-left: 15pt;
 }
-#top-left-span button{
+
+#top-left-span button {
     width: 80pt;
 }
+
+#new-games-carousel .item-title {
+    color: #1b6d85;
+    margin-bottom: -5pt;
+    padding: 5pt;
+    padding-bottom: 0px;
+}
+
+#new-games-carousel .item-category {
+    color: #8c8c8c;
+    font-size: 10pt;
+    padding: 5pt;
+    padding-top: 0px;
+}
+
+#new-games-carousel .item {
+    box-shadow: 1pt 1pt 2pt #888888;
+}
+
+#new-games-carousel .item:hover {
+    box-shadow: 0pt 6pt 10pt #888888;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,41 +2,93 @@
 .viewport {
     height: 100vh;
     position: relative;
+    margin-bottom: 15pt;
 }
 
-*{
+* {
     text-align: right;
 }
 
-.glyphicon{
+.glyphicon {
     font-size: 20pt;
     position: relative;
     top: 7pt;
 }
 
-
 h1, h2, h3, h4, h5, h6, button, span {
     font-family: Shabnam;
 }
 
-.white-text{
+.white-text {
     color: white;
 }
 
-.small-text{
+.small-text {
     font-size: 12pt;
 }
 
-.blue-text{
+.blue-text {
     color: #2aabd2;
 }
 
-.nice-link{
+.nice-link {
     color: #b4b5ba;
 }
 
-.nice-link:hover{
+.nice-link:hover {
     color: white;
     cursor: pointer;
     text-decoration: none;
+}
+
+/* 'star-rating' component */
+.starRate {
+    position: relative;
+    margin: 20px;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.starRate ul {
+    width: 160px;
+    margin: 0;
+    padding: 0;
+}
+
+.starRate li {
+    display: inline;
+    list-style: none;
+}
+
+.starRate a, .starRate b {
+    background: url("../images/star_rate.gif") left top repeat-x;
+}
+
+.starRate a {
+    float: right;
+    margin: 0 80px 0 -144px;
+    width: 80px;
+    height: 16px;
+    background-position: left 16px;
+    color: #000;
+    text-decoration: none;
+}
+
+.starRate b {
+    position: absolute;
+    z-index: -1;
+    width: 80px;
+    height: 16px;
+    background-position: left -16px;
+}
+
+.starRate div b {
+    left: 0px;
+    bottom: 0px;
+    background-position: left top;
+}
+
+.starRate a span {
+    position: absolute;
+    left: -300px;
 }
