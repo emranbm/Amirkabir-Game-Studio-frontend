@@ -3,3 +3,13 @@
     height: 100vh;
     position: relative;
 }
+
+*{
+    text-align: right;
+}
+
+.glyphicon{
+    font-size: 20pt;
+    position: relative;
+    top: 7pt;
+}
