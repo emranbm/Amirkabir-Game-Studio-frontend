@@ -13,3 +13,20 @@
     position: relative;
     top: 7pt;
 }
+
+
+h1, h2, h3, h4, h5, h6, button, span {
+    font-family: Shabnam;
+}
+
+.white-text{
+    color: white;
+}
+
+.small-text{
+    font-size: 12pt;
+}
+
+.blue-text{
+    color: #2aabd2;
+}

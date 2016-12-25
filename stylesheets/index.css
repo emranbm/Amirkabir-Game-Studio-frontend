@@ -33,21 +33,10 @@ div.owl-carousel {
     margin-bottom: 30pt;
 }
 
-h1, h2, h3, h4, h5, h6, button, span {
-    font-family: Shabnam;
-}
 
 #details-content, #trailer-div{
     color: #b4b5ba;
 }
-
-#trailer-label{
-    font-size: 12pt;
-    margin-right: -12pt;
-    position: relative;
-    top: -7pt;
-}
-
 #game-pge-btn{
     margin-left: 40pt;
     font-size: 12pt;
@@ -55,4 +44,11 @@ h1, h2, h3, h4, h5, h6, button, span {
 
 #trailer-div:hover{
     color: white;
+    cursor: pointer;
+}
+
+#top-right-span{
+    position: absolute;
+    right: 25%;
+    top: 7pt;
 }
