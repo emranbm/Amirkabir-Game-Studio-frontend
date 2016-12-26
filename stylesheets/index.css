@@ -93,17 +93,21 @@
     margin-left: -15pt;
 }
 
-#comments-div .item{
+#comments-div .item {
     border-bottom: solid #d1d1d1 1px;
     margin-bottom: 10pt;
     margin-left: 25pt;
 }
 
-#comments-div{
+#comments-div {
     margin-bottom: 0px;
 }
 
-
+#main-carousel .item h4 {
+    right: 10pt;
+    bottom: 10pt;
+    color: white;
+}
 
 
 

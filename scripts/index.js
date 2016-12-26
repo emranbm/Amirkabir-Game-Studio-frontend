@@ -2,28 +2,6 @@
  * Created by emran on 12/24/16.
  */
 $(document).ready(function () {
-    let mainCarousel = $('#main-carousel');
-    mainCarousel.owlCarousel({
-        loop: true,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-                nav: true,
-                dots: false
-            },
-            600: {
-                items: 3,
-                nav: false,
-                dots: false
-            },
-            1000: {
-                items: 6,
-                loop: true,
-                dots: false
-            }
-        }
-    });
 
     let newGamesCarousel = $('#new-games-carousel');
     newGamesCarousel.owlCarousel({
@@ -47,7 +25,43 @@ $(document).ready(function () {
         }
     });
 
-    // $.get("http://api.ie.ce-it.ir/F95/home", function(data, status){
-    //     alert("Data: " + data + "\nStatus: " + status);
-    // });
+    let mainCarousel = $('#main-carousel');
+    mainCarousel.owlCarousel({
+        loop: true,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1,
+                nav: true,
+                dots: false
+            },
+            600: {
+                items: 3,
+                nav: false,
+                dots: false
+            },
+            1000: {
+                items: 6,
+                loop: true,
+                dots: false
+            }
+        }
+    });
+
+
+    $.get("F95/home", function (data, status) {
+        if (status !== 'success') {
+            alert('مشکل در ارتباط با سرور');
+            return;
+        }
+
+        let response = JSON.parse(data).response;
+
+        if (!response.ok) {
+            alert('مشکل در بارگذازی صفحه')
+            return;
+        }
+
+        //TODO work with response
+    });
 });
