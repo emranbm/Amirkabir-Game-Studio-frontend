@@ -18,6 +18,11 @@ h1, h2, h3, h4, h5, h6, button, span {
     font-family: Shabnam;
 }
 
+.stick-bottom {
+    position: absolute;
+    bottom: 0px;
+}
+
 .white-text {
     color: white;
 }
@@ -39,6 +44,18 @@ h1, h2, h3, h4, h5, h6, button, span {
     cursor: pointer;
 }
 
-a:hover{
+a:hover {
     text-decoration: none;
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
+.round-img {
+    border-radius: 15pt;
+}
+
+.row{
+    position: relative;
 }

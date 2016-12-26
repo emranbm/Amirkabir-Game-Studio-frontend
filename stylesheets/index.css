@@ -7,11 +7,6 @@
     height: auto;
 }
 
-#main-carousel {
-    position: absolute;
-    bottom: 0px;
-}
-
 #first-viewport {
     background: linear-gradient(
             rgba(0, 0, 0, 0.8),
@@ -86,13 +81,27 @@
     box-shadow: 0pt 6pt 10pt #888888;
 }
 
-
-.item-details-div{
+.item-details-div {
     padding-left: 5pt;
     padding-right: 5pt;
     padding-bottom: 5pt;
 }
 
+#comments-div .item img {
+    width: 30pt;
+    height: 30pt;
+    margin-left: -15pt;
+}
+
+#comments-div .item{
+    border-bottom: solid #d1d1d1 1px;
+    margin-bottom: 10pt;
+    margin-left: 25pt;
+}
+
+#comments-div{
+    margin-bottom: 0px;
+}
 
 
 
