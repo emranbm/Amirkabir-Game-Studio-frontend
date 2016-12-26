@@ -28,7 +28,6 @@ $(document).ready(function () {
     let newGamesCarousel = $('#new-games-carousel');
     newGamesCarousel.owlCarousel({
         responsiveClass: true,
-        margin: 15,
         responsive: {
             0: {
                 items: 1,

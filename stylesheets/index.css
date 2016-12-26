@@ -37,6 +37,10 @@
     color: #b4b5ba;
 }
 
+#trailer-div .glyphicon {
+    top: 7pt;
+}
+
 #game-pge-btn {
     margin-left: 40pt;
     font-size: 12pt;
@@ -65,19 +69,17 @@
 #new-games-carousel .item-title {
     color: #1b6d85;
     margin-bottom: -5pt;
-    padding: 5pt;
-    padding-bottom: 0px;
 }
 
 #new-games-carousel .item-category {
     color: #8c8c8c;
     font-size: 10pt;
-    padding: 5pt;
-    padding-top: 0px;
 }
 
 #new-games-carousel .item {
     box-shadow: 1pt 1pt 2pt #888888;
+    margin: 7pt;
+    margin-bottom: 10pt;
 }
 
 #new-games-carousel .item:hover {
@@ -85,7 +87,11 @@
 }
 
 
-
+.item-details-div{
+    padding-left: 5pt;
+    padding-right: 5pt;
+    padding-bottom: 5pt;
+}
 
 
 
