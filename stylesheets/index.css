@@ -87,22 +87,6 @@
     padding-bottom: 5pt;
 }
 
-#footer-div .item img {
-    width: 30pt;
-    height: 30pt;
-    margin-left: -15pt;
-}
-
-#footer-div .item {
-    border-bottom: solid #d1d1d1 1px;
-    margin-bottom: 10pt;
-    margin-left: 25pt;
-}
-
-#footer-div {
-    margin-bottom: 0px;
-}
-
 #main-carousel .item h4 {
     right: 10pt;
     color: #f7f7f7;
