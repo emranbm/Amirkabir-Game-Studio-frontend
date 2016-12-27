@@ -23,6 +23,12 @@ $(document).ready(function () {
             $("#main-carousel").append(item);
         }
 
+        for (let newGame of homepage.new_games) {
+            let item = new NewGameCarouselItem(newGame.title, newGame.categories.join('، '), Math.floor(newGame.rate), newGame.small_image);
+            $("#new-games-carousel").append(item);
+        }
+
+
         startCarousels();
     });
 });
@@ -32,18 +38,18 @@ $(document).ready(function () {
 /**
  *
  <div class="item">
- <img src="imagePath">
+ <img src="imageUrl">
  <h4 dir="rtl" class="stick-bottom">title</h4>
  </div>
  * @param title
- * @param imagePath
+ * @param imageUrl
  * @return {Element}
  * @constructor
  */
-function MainCarouselItem(title, imagePath) {
+function MainCarouselItem(title, imageUrl) {
     let item = emranHelper.newDiv('item');
     let img = emranHelper.newElement('img');
-    img.setAttribute('src', imagePath);
+    img.setAttribute('src', imageUrl);
     item.appendChild(img);
     let h4 = emranHelper.newElement('h4', 'stick-bottom');
     h4.setAttribute('dir', 'rtl');
@@ -53,6 +59,68 @@ function MainCarouselItem(title, imagePath) {
     // let owlItem = emranHelper.newDiv('owl-item cloned', )
 
     return item;
+}
+
+/**
+ * <a href="#">
+ <div dir="ltr" class="item">
+ <img src="images/grand-theft-auto-five-game-wallpapers-dekstop-backgrounds.jpg">
+ <div class="item-details-div">
+ <h4 class="item-title">GTA V</h4>
+ <h4 class="item-category">ورزشی، فوتبال</h4>
+ <div dir="rtl" class="stars-div">
+ <span class="glyphicon glyphicon-star small-text blue-star"></span>
+ <span class="glyphicon glyphicon-star small-text blue-star"></span>
+ <span class="glyphicon glyphicon-star small-text blue-star"></span>
+ <span class="glyphicon glyphicon-star small-text"></span>
+ <span class="glyphicon glyphicon-star small-text"></span>
+ </div>
+ </div>
+ </div>
+ </a>
+ * @constructor
+ */
+function NewGameCarouselItem(title, category, stars, imageUrl, totalStars = 5) {
+    let a = emranHelper.newElement('a');
+    a.setAttribute('href', '#');
+
+    let divItem = emranHelper.newDiv('item');
+    divItem.setAttribute('dir', 'ltr');
+    a.appendChild(divItem);
+
+    let img = emranHelper.newElement('img');
+    img.setAttribute('src', imageUrl);
+    divItem.appendChild(img);
+
+    let detailsDiv = emranHelper.newDiv('item-details-div');
+    detailsDiv.setAttribute('dir','rtl');
+    divItem.appendChild(detailsDiv);
+
+    let h4Title = emranHelper.newElement('h4', 'item-title');
+    h4Title.innerHTML = title;
+    detailsDiv.appendChild(h4Title);
+
+    let h4Category = emranHelper.newElement('h4', 'item-category');
+    h4Category.innerHTML = category;
+    detailsDiv.appendChild(h4Category);
+
+    let starsDiv = emranHelper.newDiv('stars-div');
+    starsDiv.setAttribute('dir', 'rtl');
+    detailsDiv.appendChild(starsDiv);
+
+    let i = 0;
+    for (; i < stars; i++) {
+        let star = emranHelper.newElement('span', 'glyphicon glyphicon-star small-text blue-star');
+        starsDiv.appendChild(star);
+    }
+
+    for (; i < totalStars; i++) {
+        let star = emranHelper.newElement('span', 'glyphicon glyphicon-star small-text');
+        starsDiv.appendChild(star);
+    }
+
+    return a;
+
 }
 
 function carouselAddItem(carousel, content, position) {
