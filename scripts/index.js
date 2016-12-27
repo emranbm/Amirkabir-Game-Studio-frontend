@@ -38,6 +38,12 @@ $(document).ready(function () {
             $("#comments-div").append(item);
         }
 
+        // Tutorials
+        for (let tut of homepage.tutorials) {
+            let item = new TutorialItem(tut.title, tut.date, tut.game.small_image);
+            $("#tutorials-div").append(item);
+        }
+
     });
 });
 
@@ -213,6 +219,42 @@ function CommentItem(text, date, avatarUrl) {
     return item;
 }
 
+/**
+ * <div class="row item">
+ <div class="col-md-10">
+ <span class="text-info small-text">بهترین بازی تمام عمرم</span><br/>
+ <h6 class="text-muted">دوشنبه ۱۷ آبان ۹۵</h6>
+ </div>
+ <div class="col-md-2">
+ <img src="images/421645.jpg"/>
+ </div>
+ </div>
+ * @param text
+ * @param date
+ * @param avatarUrl
+ * @return {Element}
+ * @constructor
+ */
+function TutorialItem(text, date, avatarUrl) {
+    let item = emranHelper.newDiv('row item');
+
+    let div1 = emranHelper.newDiv('col-md-10');
+    item.appendChild(div1);
+    let span = emranHelper.newElement('span', 'text-info small-text');
+    span.innerHTML = text;
+    div1.appendChild(span);
+    let h6 = emranHelper.newElement('h6', 'text-muted');
+    h6.innerHTML = date;
+    div1.appendChild(h6);
+
+    let div2 = emranHelper.newDiv('col-md-2');
+    item.appendChild(div2);
+    let img = emranHelper.newElement('img');
+    img.setAttribute('src', avatarUrl);
+    div2.appendChild(img);
+
+    return item;
+}
 
 
 
