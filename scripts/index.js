@@ -18,18 +18,26 @@ $(document).ready(function () {
 
         let homepage = response.result.homepage;
 
+        // Main carousel
         for (let slide of homepage.slider) {
             let item = new MainCarouselItem(slide.title, slide.small_image);
             $("#main-carousel").append(item);
         }
 
+        // New games carousel
         for (let newGame of homepage.new_games) {
             let item = new NewGameCarouselItem(newGame.title, newGame.categories.join('، '), Math.floor(newGame.rate), newGame.small_image);
             $("#new-games-carousel").append(item);
         }
 
-
         startCarousels();
+
+        // Comments
+        for (let comment of homepage.comments) {
+            let item = new CommentItem(comment.text, comment.date, comment.player.avatar);
+            $("#comments-div").append(item);
+        }
+
     });
 });
 
@@ -93,7 +101,7 @@ function NewGameCarouselItem(title, category, stars, imageUrl, totalStars = 5) {
     divItem.appendChild(img);
 
     let detailsDiv = emranHelper.newDiv('item-details-div');
-    detailsDiv.setAttribute('dir','rtl');
+    detailsDiv.setAttribute('dir', 'rtl');
     divItem.appendChild(detailsDiv);
 
     let h4Title = emranHelper.newElement('h4', 'item-title');
@@ -122,28 +130,6 @@ function NewGameCarouselItem(title, category, stars, imageUrl, totalStars = 5) {
     return a;
 
 }
-
-function carouselAddItem(carousel, content, position) {
-    // prepare content
-    // content = carousel.prepare(content);
-    position = position === undefined ? carousel._items.length : carousel.normalize(position, true);
-
-    carousel.trigger('add', {content: content, position: position});
-
-    if (carousel._items.length === 0 || position === this._items.length) {
-        carousel.$stage.append(content);
-        carousel._items.push(content);
-        carousel._mergers.push(content.find('[data-merge]').andSelf('[data-merge]').attr('data-merge') * 1 || 1);
-    } else {
-        carousel._items[position].before(content);
-        carousel._items.splice(position, 0, content);
-        carousel._mergers.splice(position, 0, content.find('[data-merge]').andSelf('[data-merge]').attr('data-merge') * 1 || 1);
-    }
-
-    carousel.invalidate('items');
-
-    carousel.trigger('added', {content: content, position: position});
-};
 
 function startCarousels() {
     let newGamesCarousel = $('#new-games-carousel');
@@ -191,3 +177,46 @@ function startCarousels() {
         }
     });
 }
+
+/**
+ * <div class="row item">
+ <div class="col-md-10">
+ <span class="text-info small-text">بهترین بازی تمام عمرم</span><br/>
+ <h6 class="text-muted">دوشنبه ۱۷ آبان ۹۵</h6>
+ </div>
+ <div class="col-md-2">
+ <img class="round-img" src="images/421645.jpg"/>
+ </div>
+ </div>
+ * @param text
+ * @param date
+ * @constructor
+ */
+function CommentItem(text, date, avatarUrl) {
+    let item = emranHelper.newDiv('row item');
+
+    let div1 = emranHelper.newDiv('col-md-10');
+    item.appendChild(div1);
+    let span = emranHelper.newElement('span', 'text-info small-text');
+    span.innerHTML = text;
+    div1.appendChild(span);
+    let h6 = emranHelper.newElement('h6', 'text-muted');
+    h6.innerHTML = date;
+    div1.appendChild(h6);
+
+    let div2 = emranHelper.newDiv('col-md-2');
+    item.appendChild(div2);
+    let img = emranHelper.newElement('img', 'round-img');
+    img.setAttribute('src', avatarUrl);
+    div2.appendChild(img);
+
+    return item;
+}
+
+
+
+
+
+
+
+
