@@ -18,7 +18,7 @@ $.get("F95/home", function (data, status) {
 
     // Main carousel
     for (let slide of homepage.slider) {
-        let item = new MainCarouselItem(slide.title, slide.small_image);
+        let item = new MainCarouselItem(slide.title, slide.large_image);
         $("#main-carousel").append(item);
     }
 
@@ -81,7 +81,7 @@ function MainCarouselItem(title, imageUrl) {
  */
 function NewGameCarouselItem(title, category, stars, imageUrl, totalStars = 5) {
     let a = emranHelper.newElement('a');
-    a.setAttribute('href', '#');
+    a.setAttribute('href', 'F95/games.html?game=' + title);
 
     let divItem = emranHelper.newDiv('item');
     divItem.setAttribute('dir', 'ltr');

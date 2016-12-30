@@ -25,3 +25,37 @@
     padding: 0;
     margin-left: -25pt;
 }
+
+header {
+    height: 130pt;
+
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.8)
+    ), url('http://cdn.zoomg.ir/2016/11/7b62a451-3ae4-46ec-b7f0-75a503cd26ea.jpg') center center no-repeat;
+    background-size: cover;
+}
+
+header h2 {
+    color: white;
+}
+
+#header-content {
+    margin-top: 20pt;
+}
+
+#raters-label:before {
+    content: '(';
+}
+
+#raters-label:after {
+    content: ' رأی)';
+}
+
+#header-img {
+    width: 90pt;
+    height: 90pt;
+    border-radius: 10pt;
+    position: absolute;
+    left: 0px;
+}

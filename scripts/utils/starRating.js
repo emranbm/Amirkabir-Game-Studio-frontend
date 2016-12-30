@@ -4,8 +4,15 @@
 
 window.starRating = {};
 
-starRating.starRatingElement = (value, total = 5) => {
-    let starsDiv = emranHelper.newDiv('stars-div');
+starRating.starRatingElement = (value, total = 5, starsDiv) => {
+    if (!starsDiv)
+        starsDiv = emranHelper.newDiv();
+
+    if (starsDiv.className)
+        starsDiv.className += ' stars-div2';
+    else
+        starsDiv.className = 'stars-div';
+
     starsDiv.setAttribute('dir', 'rtl');
 
     let i = 0;
