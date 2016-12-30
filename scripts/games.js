@@ -21,5 +21,6 @@ $.get("F95/games/" + emranHelper.getParameterByName('game') + '/header', functio
     $('#raters-label').html(persianizer.reshapeNums(game.number_of_comments));
     $('#header-img').attr('src', game.small_image);
     $('header').css('background-img', game.large_image);
+    $('#game-genre').html(game.categories.join('، '));
     starRating.starRatingElement(Math.round(game.rate), 5, $('#rate-star-div')[0]);
 });
