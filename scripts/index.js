@@ -103,20 +103,8 @@ function NewGameCarouselItem(title, category, stars, imageUrl, totalStars = 5) {
     h4Category.innerHTML = category;
     detailsDiv.appendChild(h4Category);
 
-    let starsDiv = emranHelper.newDiv('stars-div');
-    starsDiv.setAttribute('dir', 'rtl');
+    let starsDiv = starRating.starRatingElement(stars, totalStars);
     detailsDiv.appendChild(starsDiv);
-
-    let i = 0;
-    for (; i < stars; i++) {
-        let star = emranHelper.newElement('span', 'glyphicon glyphicon-star small-text blue-star');
-        starsDiv.appendChild(star);
-    }
-
-    for (; i < totalStars; i++) {
-        let star = emranHelper.newElement('span', 'glyphicon glyphicon-star small-text');
-        starsDiv.appendChild(star);
-    }
 
     return a;
 
