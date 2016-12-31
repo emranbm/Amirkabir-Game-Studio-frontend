@@ -81,7 +81,7 @@ function MainCarouselItem(title, imageUrl) {
  */
 function NewGameCarouselItem(title, category, stars, imageUrl, totalStars = 5) {
     let a = emranHelper.newElement('a');
-    a.setAttribute('href', 'F95/games.html?game=' + title);
+    a.setAttribute('href', 'games.html?game=' + title);
 
     let divItem = emranHelper.newDiv('item');
     divItem.setAttribute('dir', 'ltr');
