@@ -42,6 +42,7 @@ h1, h2, h3, h4, h5, h6, button, span, a, .shabnam-font {
 .nice-link:hover {
     color: white;
     cursor: pointer;
+    cursor: hand;
 }
 
 a:hover, a, a:active {
