@@ -51,8 +51,6 @@ window.persianizer = {
             }
         }
 
-        console.log(result);
-
         return result;
     }
 };
