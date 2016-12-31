@@ -10,7 +10,10 @@ window.emranHelper = {};
  * @param className
  */
 emranHelper.removeClass = (element, className) => {
-    element.className = element.className.replace(new RegExp(className + "| " + className + "|" + className + " "), "")
+    if (element.removeClass)
+        element.removeClass(className);
+    else
+        element.className = element.className.replace(new RegExp(className + "| " + className + "|" + className + " "), "")
 };
 
 /**
@@ -21,7 +24,8 @@ emranHelper.removeClass = (element, className) => {
  */
 emranHelper.hasClass = (element, className) => {
     // console.log(element.id + "###" + element.className + " has the class " + className + " ::: " + new RegExp(className).test(element.className));
-    return new RegExp(className).test(element.className);
+    let elementClassName = element.attr ? element.attr('class') : element.className;
+    return new RegExp(className).test(elementClassName);
 };
 
 /**

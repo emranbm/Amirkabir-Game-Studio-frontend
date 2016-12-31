@@ -1,0 +1,20 @@
+#board .score, #score {
+    margin-bottom: 5pt;
+    margin-top: 3pt;
+}
+
+.hexagon, .hexagon-40, .hexagon-45 {
+    padding-right: 5pt;
+}
+
+.progress-bar {
+    margin: auto;
+}
+
+#board {
+    margin-bottom: 15pt;
+}
+
+#rate {
+    padding-right: 56pt;
+}

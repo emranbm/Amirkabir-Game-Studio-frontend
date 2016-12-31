@@ -4,8 +4,8 @@
 
 const GAME_TITLE = emranHelper.getParameterByName('game');
 
-
 $('#info-tab').click(infoTabClick);
+$('#leader-tab').click(leaderTabClick);
 
 $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
 
@@ -27,6 +27,9 @@ $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
 });
 
 function infoTabClick() {
+    resetActiveTabs();
+    $('#info-tab').addClass('active');
+
     if (infoTabClick.cache)
         return $('.tab-content').html(infoTabClick.cache);
 
@@ -37,7 +40,69 @@ function infoTabClick() {
 
         infoTabClick.cache = response.result.game.info;
         infoTabClick();
-    })
+    });
+}
+
+function leaderTabClick() {
+    resetActiveTabs();
+    $('#leader-tab').addClass('active');
+
+    if (leaderTabClick.cache) {
+        let leaderboard = leaderTabClick.cache;
+
+        if (leaderboard.length == 0)
+            return;
+
+        // Add leaderboard html.
+        {
+            $('.tab-content').html('<div id="board"> <div id="title"> برترین ها </div><div id="best"> <div id="person1"> <div class="rate"> ۲ </div><div> <img src="images/thmub.jpg" class="silver-border"> <div class="hexagon-40 level-16md"> ۳۱ </div></div><div class="name text-center"> سروش صحت </div><div class="score text-center"> ۱۵۰۰۰۰۰۰۰ </div><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> </div></div><div id="person2"> <div id="rate"> ۱ </div><div> <img src="images/thmub.jpg" class="gold_border"> <div class="hexagon-45 level-18md"> ۳۲ </div></div><div id="name" class="text-center"> کریم عبدالجبار </div><div id="score" class="text-center"> ۱۵۰۰۰۰۰۰۰ </div><div id="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></div><div id="person3"> <div class="rate"> ۳ </div><div> <img src="images/thmub.jpg" class="bronze-border"> <div class="hexagon-40 level-16md"> ۲۹ </div></div><div class="name text-center"> الب ارسلان </div><div class="score text-center"> ۱۵۰۰۰۰۰۰۰ </div><div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></div></div><div id="list"> <div class="list-item"> <div class="stars-block"> <div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></div><div class="rank-list"> ۴ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۲۵ </div></div><div class="information"> <div class="name"> کاظم اسماعیلی </div><div class="score"> ۱۵۰۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></div><div class="rank-list"> ۵ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۲۲ </div></div><div class="information"> <div class="name"> سیامک انتظامی </div><div class="score"> ۱۴۵۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></div><div class="rank-list"> ۶ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۲۱ </div></div><div class="information"> <div class="name"> بهمن احسان پور </div><div class="score"> ۱۳۲۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></div><div class="rank-list"> ۷ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۱۵ </div></div><div class="information"> <div class="name"> سعید کمالوند </div><div class="score"> ۱۲۴۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></div><div class="rank-list"> ۸ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۱۴ </div></div><div class="information"> <div class="name"> جاستین بیرانوند </div><div class="score"> ۱۲۳۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> <i class="material-icons md-18 light_gray_star">star</i> </div></div><div class="rank-list"> ۹ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۸ </div></div><div class="information"> <div class="name"> پویا انوری راد </div><div class="score"> ۱۱۹۰۰۰۰۰۰ </div></div></div><div class="list-item"> <div class="stars-block"> <div class="stars"> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> <i class="material-icons md-18 gold_star">star</i> </div></div><div class="rank-list"> ۱۰ </div><div class="personal-image"> <img src="images/thmub.jpg" class="list-image"> <div class="hexagon level-14md"> ۸ </div></div><div class="information"> <div class="name"> بهزاد میامی </div><div class="score"> ۱۱۵۰۰۰۰۰۰ </div></div></div></div></div>');
+        }
+
+        let rank1 = getLeaderboardRank(leaderboard, 1);
+        $('#person2 img').attr('src', rank1.player.avatar);
+        $('#name').html(rank1.player.name);
+        $('#score').html(persianizer.reshapeNums(rank1.score));
+        setStars($('#stars i'), Math.abs(rank1.displacement));
+        $('#person2 div.hexagon-45').html(persianizer.reshapeNums(rank1.level));
+        console.log(persianizer.reshapeNums(Math.abs(rank1.displacement)));
+
+        let rank2 = getLeaderboardRank(leaderboard, 2);
+        $('#person1 img').attr('src', rank2.player.avatar);
+        $('#person1 .name').html(rank2.player.name);
+        $('#person1 .score').html(persianizer.reshapeNums(rank2.score));
+        setStars($('#person1 .stars i'), Math.abs(rank2.displacement));
+        $('#person1 div.hexagon-40').html(persianizer.reshapeNums(rank2.level));
+
+        let rank3 = getLeaderboardRank(leaderboard, 3);
+        $('#person3 img').attr('src', rank3.player.avatar);
+        $('#person3 .name').html(rank3.player.name);
+        $('#person3 .score').html(persianizer.reshapeNums(rank3.score));
+        setStars($('#person3 .stars i'), Math.abs(rank3.displacement));
+        $('#person3 div.hexagon-40').html(persianizer.reshapeNums(rank3.level));
+
+        let rankLevel = 4;
+        for (let listItem of $('.list-item')) {
+            let r = getLeaderboardRank(leaderboard, rankLevel);
+            $(listItem).find('img').attr('src', r.player.avatar);
+            $(listItem).find('.name').html(r.player.name);
+            $(listItem).find('.score').html(persianizer.reshapeNums(r.score));
+            setStars($(listItem).find('.stars i'), Math.abs(r.displacement));
+            $(listItem).find('div.hexagon-40').html(persianizer.reshapeNums(r.level));
+
+            rankLevel++;
+        }
+
+        return;
+    }
+
+    $.get("F95/games/" + GAME_TITLE + "/leaderboard", function (data, status) {
+        let response = checkResponse(data, status);
+        if (!response)
+            return;
+
+        leaderTabClick.cache = response.result.leaderboard;
+        leaderTabClick();
+    });
 }
 
 /**
@@ -60,6 +125,35 @@ function checkResponse(data, status) {
     }
 
     return response;
+}
+
+function resetActiveTabs() {
+    $('.nav-tabs li').removeClass('active');
+}
+
+function getLeaderboardRank(leaderboard, rank = 1) {
+    /*for (let item of leaderboard) {
+     if (item.displacement == rank)
+     return item;
+     }*/
+
+    return leaderboard[rank - 1];
+
+    // return null;
+}
+
+function setStars(starElements, value) {
+    let i;
+    for (i = 0; i < value; i++) {
+        $(starElements[i]).removeClass('light_gray_star');
+        $(starElements[i]).addClass('gold_star');
+    }
+
+    for (; i < starElements.length; i++) {
+        $(starElements[i]).removeClass('gold_star');
+        $(starElements[i]).addClass('light_gray_star');
+    }
+
 }
 
 
