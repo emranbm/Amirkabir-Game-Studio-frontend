@@ -1,31 +1,3 @@
-#primary-bar {
-    border: solid black 2pt;
-    padding: 5pt;
-}
-
-#login-label {
-    position: relative;
-    top: -5pt;
-}
-
-#search-div {
-    border: solid #f7f7f7 1pt;
-    margin-left: 5pt;
-}
-
-#search-input {
-    border: none;
-    height: 100%;
-    width: 90%;
-    padding-right: 0;
-}
-
-#search-icon {
-    font-size: 15pt;
-    padding: 0;
-    margin-left: -25pt;
-}
-
 header {
     height: 130pt;
     background-size: cover;
