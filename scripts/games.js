@@ -8,6 +8,7 @@ $('#info-tab').click(infoTabClick);
 $('#leader-tab').click(leaderTabClick);
 $('#comments-tab').click(commentsTabClick);
 $('#related-games-tab').click(relatedGamesTabClick);
+$('#gallery-tab').click(galleryTabClick);
 
 $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
 
@@ -25,7 +26,7 @@ $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
     $('#game-genre').html(game.categories.join('، '));
     starRating.starRatingElement(Math.round(game.rate), 5, $('#rate-star-div')[0]);
 
-    infoTabClick(null);
+    infoTabClick();
 });
 
 function infoTabClick() {
@@ -124,6 +125,7 @@ function commentsTabClick() {
 
         let comments = commentsTabClick.cache;
 
+        $('.tab-content').html('<div class="comments-content"></div>');
 
         addComments(comments);
 
@@ -152,7 +154,6 @@ function commentsTabClick() {
             return;
 
         commentsTabClick.cache = response.result.comments;
-        $('.tab-content').html('<div class="comments-content"></div>');
         commentsTabClick();
     })
 
@@ -165,6 +166,8 @@ function relatedGamesTabClick() {
 
     if (relatedGamesTabClick.cache) {
         let games = relatedGamesTabClick.cache;
+
+        $('.tab-content').html('');
 
         let c4 = 0;
         let row;
@@ -198,6 +201,59 @@ function relatedGamesTabClick() {
         $('.tab-content').html('');
         relatedGamesTabClick();
     });
+}
+
+function galleryTabClick() {
+    resetActiveTabs();
+    $('#gallery-tab').addClass('active-tab');
+    $('#tab-title').html($('#gallery-tab a').html());
+
+    if (galleryTabClick.cache) {
+
+        let images = galleryTabClick.cache;
+        $('.tab-content').html('<div class="owl-carousel owl-theme" dir="ltr"></div>');
+
+        for (let img of images) {
+            $('.owl-carousel').append('<a href="' + img.url + '"><img class="item" src="' + img.url + '"></a>');
+        }
+
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            responsiveClass: true,
+            animateOut: 'fadeOut',
+            autoplay: false,
+            margin: 10,
+            animateInClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true,
+                    dots: false
+                },
+                600: {
+                    items: 2,
+                    nav: false,
+                    dots: false
+                },
+                1000: {
+                    items: 5,
+                    loop: true,
+                    dots: false
+                }
+            }
+        });
+        return
+    }
+
+    $.get('F95/games/' + GAME_TITLE + '/gallery', function (data, status) {
+        let response = checkResponse(data, status);
+        if (!response)
+            return;
+
+        galleryTabClick.cache = response.result.gallery.images;
+        galleryTabClick();
+    })
+
 }
 
 /**
