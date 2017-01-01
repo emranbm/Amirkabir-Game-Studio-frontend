@@ -7,6 +7,7 @@ const GAME_TITLE = emranHelper.getParameterByName('game');
 $('#info-tab').click(infoTabClick);
 $('#leader-tab').click(leaderTabClick);
 $('#comments-tab').click(commentsTabClick);
+$('#related-games-tab').click(relatedGamesTabClick);
 
 $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
 
@@ -123,22 +124,22 @@ function commentsTabClick() {
 
         let comments = commentsTabClick.cache;
 
-        $('.tab-content').html('');
 
-        for (let c of comments) {
-            let commentElement = $('<div class="row comment-row"> <div class="col-md-3 comment-stars-div"><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text"></span></div><div class="col-md-7" dir="rtl"> <h5>۲۲ آذر ۹۵</h5> <span class="username text-primary">ali</span> <span class="text-primary comment-text">بسیار بازی زیبا و قشنگی بود</span> </div><div class="col-md-2"> <img class="round-img" src="images/thmub.jpg"> </div></div>');
-            if (c.player.avatar)
-                commentElement.find('img').attr('src', c.player.avatar);
-            commentElement.find('.username').html(c.player.name);
-            commentElement.find('h5').html(c.date);
-            commentElement.find('.comment-text').html(c.text);
-            setStars(commentElement.find('.comment-stars-div span'), c.rate, 'blue-star', '');
-
-            $('.tab-content').append(commentElement);
-        }
+        addComments(comments);
 
         let nextBtn = $('<button class="btn btn-primary center-block">بارگذاری نظرات بعدی</button>');
-        //TODO nextBtn click...
+        let offset = comments.length;
+        nextBtn.click(function () {
+            $.get('F95/games/' + GAME_TITLE + '/comments?offset=' + offset, function (data, status) {
+                let response = checkResponse(data, status);
+                if (!response)
+                    return;
+                if (response.result.comments.length == 0)
+                    nextBtn.addClass('hidden');
+
+                addComments(response.result.comments);
+            })
+        });
         $('.tab-content').append(nextBtn);
 
 
@@ -151,9 +152,14 @@ function commentsTabClick() {
             return;
 
         commentsTabClick.cache = response.result.comments;
+        $('.tab-content').html('<div class="comments-content"></div>');
         commentsTabClick();
     })
 
+}
+
+function relatedGamesTabClick() {
+    
 }
 
 /**
@@ -208,7 +214,19 @@ function setStars(starElements, value, activeClass = 'gold_star', passiveClass =
 
 }
 
+function addComments(comments) {
+    for (let c of comments) {
+        let commentElement = $('<div class="row comment-row"> <div class="col-md-3 comment-stars-div"><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text"></span></div><div class="col-md-7" dir="rtl"> <h5>۲۲ آذر ۹۵</h5> <span class="username text-primary">ali</span> <span class="text-primary comment-text">بسیار بازی زیبا و قشنگی بود</span> </div><div class="col-md-2"> <img class="round-img" src="images/thmub.jpg"> </div></div>');
+        if (c.player.avatar)
+            commentElement.find('img').attr('src', c.player.avatar);
+        commentElement.find('.username').html(c.player.name);
+        commentElement.find('h5').html(c.date);
+        commentElement.find('.comment-text').html(c.text);
+        setStars(commentElement.find('.comment-stars-div span'), c.rate, 'blue-star', '');
 
+        $('.comments-content').append(commentElement);
+    }
+}
 
 
 
