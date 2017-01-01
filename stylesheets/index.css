@@ -61,32 +61,6 @@
     width: 80pt;
 }
 
-#new-games-carousel .item-title {
-    color: #1b6d85;
-    margin-bottom: -5pt;
-}
-
-#new-games-carousel .item-category {
-    color: #8c8c8c;
-    font-size: 10pt;
-}
-
-#new-games-carousel .item {
-    box-shadow: 1pt 1pt 2pt #888888;
-    margin: 7pt;
-    margin-bottom: 10pt;
-}
-
-#new-games-carousel .item:hover {
-    box-shadow: 0pt 6pt 10pt #888888;
-}
-
-.item-details-div {
-    padding-left: 5pt;
-    padding-right: 5pt;
-    padding-bottom: 5pt;
-}
-
 #main-carousel .item h4 {
     right: 10pt;
     color: #f7f7f7;
