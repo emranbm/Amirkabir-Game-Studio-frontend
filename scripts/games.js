@@ -6,6 +6,7 @@ const GAME_TITLE = emranHelper.getParameterByName('game');
 
 $('#info-tab').click(infoTabClick);
 $('#leader-tab').click(leaderTabClick);
+$('#comments-tab').click(commentsTabClick);
 
 $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
 
@@ -19,7 +20,7 @@ $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
     $('#rate-label').html(persianizer.reshapeNums(Number.parseFloat(game.rate)));
     $('#raters-label').html(persianizer.reshapeNums(game.number_of_comments));
     $('#header-img').attr('src', game.small_image);
-    $('header').css('background', "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('" + game.large_image + "') center center no-repeat");
+    $('header').css('background', "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('" + game.large_image + "') center no-repeat");
     $('#game-genre').html(game.categories.join('، '));
     starRating.starRatingElement(Math.round(game.rate), 5, $('#rate-star-div')[0]);
 
@@ -29,8 +30,7 @@ $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
 function infoTabClick() {
     resetActiveTabs();
     $('#info-tab').addClass('active-tab');
-
-    $('#tab-title').html('اطلاعات بازی');
+    $('#tab-title').html($('#info-tab a').html());
 
     if (infoTabClick.cache)
         return $('.tab-content').html(infoTabClick.cache);
@@ -48,8 +48,7 @@ function infoTabClick() {
 function leaderTabClick() {
     resetActiveTabs();
     $('#leader-tab').addClass('active-tab');
-
-    $('#tab-title').html('رتبه‌بندی و امتیازات');
+    $('#tab-title').html($('#leader-tab a').html());
 
 
     if (leaderTabClick.cache) {
@@ -114,6 +113,49 @@ function leaderTabClick() {
     });
 }
 
+function commentsTabClick() {
+    resetActiveTabs();
+    $('#comments-tab').addClass('active-tab');
+    $('#tab-title').html($('#comments-tab a').html());
+    $('#comment-btn').removeClass('hidden');
+
+    if (commentsTabClick.cache) {
+
+        let comments = commentsTabClick.cache;
+
+        $('.tab-content').html('');
+
+        for (let c of comments) {
+            let commentElement = $('<div class="row comment-row"> <div class="col-md-3 comment-stars-div"><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text"></span></div><div class="col-md-7" dir="rtl"> <h5>۲۲ آذر ۹۵</h5> <span class="username text-primary">ali</span> <span class="text-primary comment-text">بسیار بازی زیبا و قشنگی بود</span> </div><div class="col-md-2"> <img class="round-img" src="images/thmub.jpg"> </div></div>');
+            if (c.player.avatar)
+                commentElement.find('img').attr('src', c.player.avatar);
+            commentElement.find('.username').html(c.player.name);
+            commentElement.find('h5').html(c.date);
+            commentElement.find('.comment-text').html(c.text);
+            setStars(commentElement.find('.comment-stars-div span'), c.rate, 'blue-star', '');
+
+            $('.tab-content').append(commentElement);
+        }
+
+        let nextBtn = $('<button class="btn btn-primary center-block">بارگذاری نظرات بعدی</button>');
+        //TODO nextBtn click...
+        $('.tab-content').append(nextBtn);
+
+
+        return
+    }
+
+    $.get("F95/games/" + GAME_TITLE + "/comments", function (data, status) {
+        let response = checkResponse(data, status);
+        if (!response)
+            return;
+
+        commentsTabClick.cache = response.result.comments;
+        commentsTabClick();
+    })
+
+}
+
 /**
  * Parses and returns the server response. if a problem found, returns null.
  * @param data
@@ -138,6 +180,7 @@ function checkResponse(data, status) {
 
 function resetActiveTabs() {
     $('.nav-tabs li').removeClass('active-tab');
+    $('#comment-btn').addClass('hidden');
 }
 
 function getLeaderboardRank(leaderboard, rank = 1) {
@@ -151,16 +194,16 @@ function getLeaderboardRank(leaderboard, rank = 1) {
     // return null;
 }
 
-function setStars(starElements, value) {
+function setStars(starElements, value, activeClass = 'gold_star', passiveClass = 'light_gray_star') {
     let i;
     for (i = 0; i < value; i++) {
-        $(starElements[i]).removeClass('light_gray_star');
-        $(starElements[i]).addClass('gold_star');
+        $(starElements[i]).removeClass(passiveClass);
+        $(starElements[i]).addClass(activeClass);
     }
 
     for (; i < starElements.length; i++) {
-        $(starElements[i]).removeClass('gold_star');
-        $(starElements[i]).addClass('light_gray_star');
+        $(starElements[i]).removeClass(activeClass);
+        $(starElements[i]).addClass(passiveClass);
     }
 
 }

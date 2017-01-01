@@ -79,25 +79,69 @@ header h2 {
 }
 
 #tab-title {
-    border-bottom: solid #dedede 2pt;
-    padding-bottom: 15pt;
-    margin-bottom: 15pt;
+    display: inline;
     padding-right: 20pt;
+    padding-top: 0pt;
 }
 
-.container{
+#tab-title-div {
+    border-bottom: solid #dedede 2pt;
+    margin-bottom: 15pt;
+    padding-top: 15pt;
+    padding-bottom: 15pt;
+}
+
+.container {
     padding-right: 15%;
     padding-left: 15%;
     padding-bottom: 20pt;
 }
 
-.active-tab{
+.active-tab {
     border-bottom: solid #337ab7 2pt;
 }
 
 #tabs-full-div {
     background-color: #e8e8e8;
 }
+
+#comment-btn {
+    float: left;
+}
+
+.comment-row {
+    padding: 10pt;
+}
+
+.comment-row:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.comment-row img {
+    max-height: 30pt;
+    float: left;
+}
+
+.username:after {
+    content: ": ";
+}
+
+.tab-content button{
+    margin-top: 15pt;
+}
+
+.comment-stars-div{
+    margin-top: 10pt;
+}
+
+
+
+
+
+
+
+
+
 
 
 
