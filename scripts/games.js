@@ -51,11 +51,14 @@ function leaderTabClick() {
 
     $('#tab-title').html('رتبه‌بندی و امتیازات');
 
+
     if (leaderTabClick.cache) {
         let leaderboard = leaderTabClick.cache;
 
-        if (leaderboard.length == 0)
+        if (leaderboard.length == 0) {
+            $('.tab-content').html('محتوایی یافت نشد');
             return;
+        }
 
         // Add leaderboard html.
         {
@@ -98,7 +101,6 @@ function leaderTabClick() {
 
             rankLevel++;
         }
-
         return;
     }
 
