@@ -28,7 +28,9 @@ $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
 
 function infoTabClick() {
     resetActiveTabs();
-    $('#info-tab').addClass('active');
+    $('#info-tab').addClass('active-tab');
+
+    $('#tab-title').html('اطلاعات بازی');
 
     if (infoTabClick.cache)
         return $('.tab-content').html(infoTabClick.cache);
@@ -45,7 +47,9 @@ function infoTabClick() {
 
 function leaderTabClick() {
     resetActiveTabs();
-    $('#leader-tab').addClass('active');
+    $('#leader-tab').addClass('active-tab');
+
+    $('#tab-title').html('رتبه‌بندی و امتیازات');
 
     if (leaderTabClick.cache) {
         let leaderboard = leaderTabClick.cache;
@@ -131,7 +135,7 @@ function checkResponse(data, status) {
 }
 
 function resetActiveTabs() {
-    $('.nav-tabs li').removeClass('active');
+    $('.nav-tabs li').removeClass('active-tab');
 }
 
 function getLeaderboardRank(leaderboard, rank = 1) {
