@@ -88,6 +88,7 @@ header h2 {
 .container{
     padding-right: 15%;
     padding-left: 15%;
+    padding-bottom: 20pt;
 }
 
 .active-tab{

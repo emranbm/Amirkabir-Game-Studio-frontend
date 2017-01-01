@@ -1,0 +1,22 @@
+footer {
+    padding-top: 20pt;
+    background-color: #fafafa;
+}
+
+footer li {
+    display: inline-block;
+    margin-left: 20pt;
+}
+
+footer li:last-child {
+    float: left;
+}
+
+footer img {
+    max-height: 60pt;
+}
+
+footer div.row.text-center {
+    background-color: #e0e0e0;
+    padding: 20pt;
+}
