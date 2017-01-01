@@ -12,6 +12,10 @@
     box-shadow: 1pt 1pt 2pt #888888;
     margin: 7pt;
     margin-bottom: 10pt;
+    padding-right: 0px;
+    padding-left: 0px;
+    display: inline-block;
+    max-width: 120pt;
 }
 
 .game-item:hover {
@@ -22,4 +26,10 @@
     padding-left: 5pt;
     padding-right: 5pt;
     padding-bottom: 5pt;
+}
+
+.game-item img {
+    max-width: 120pt;
+    width: auto;
+    height: auto;
 }

@@ -34,7 +34,7 @@ function infoTabClick() {
     $('#tab-title').html($('#info-tab a').html());
 
     if (infoTabClick.cache)
-        return $('.tab-content').html(infoTabClick.cache);
+        return $('.tab-content').html('<div id="info-div">' + infoTabClick.cache + '</div>');
 
     $.get("F95/games/" + GAME_TITLE + "/info", function (data, status) {
         let response = checkResponse(data, status);
@@ -159,7 +159,45 @@ function commentsTabClick() {
 }
 
 function relatedGamesTabClick() {
-    
+    resetActiveTabs();
+    $('#related-games-tab').addClass('active-tab');
+    $('#tab-title').html($('#related-games-tab a').html());
+
+    if (relatedGamesTabClick.cache) {
+        let games = relatedGamesTabClick.cache;
+
+        let c4 = 0;
+        let row;
+
+        for (let g of games) {
+            if (c4 % 4 == 0) {
+                row = $('<div class="row"></div>');
+                $('.tab-content').append(row);
+            }
+            let gameItem = $('<a><div class="game-item" dir="ltr"><img src="http://cdn.zoomg.ir/2016/11/bf222635-75e2-4c6e-8635-9e5415dc9332.jpg"> <div class="item-details-div" dir="rtl"><h4 class="item-title">بازی Dishonored 2</h4><h4 class="item-category">تیراندازی، اول شخص، اکشن</h4> <div class="stars-div" dir="rtl"><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text blue-star"></span><span class="glyphicon glyphicon-star small-text"></span></div></div></div></a>')
+            gameItem.find('img').attr('src', g.large_image);
+            gameItem.find('.item-title').html(g.title);
+            gameItem.find('.item-category').html(g.categories.join('، '));
+            gameItem.attr('href', 'games.html?game=' + g.title);
+            setStars(gameItem.find('.glyphicon-star'), g.rate, 'blue-star', '');
+
+            row.append(gameItem);
+            c4++;
+        }
+
+        return;
+    }
+
+    $.get("F95/games/" + GAME_TITLE + "/related_games", function (data, status) {
+        let response = checkResponse(data, status);
+        if (!response)
+            return;
+
+
+        relatedGamesTabClick.cache = response.result.games;
+        $('.tab-content').html('');
+        relatedGamesTabClick();
+    });
 }
 
 /**
