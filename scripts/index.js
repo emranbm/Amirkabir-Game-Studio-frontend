@@ -137,6 +137,9 @@ function startCarousels() {
     let Owl = mainCarousel.owlCarousel({
         loop: true,
         responsiveClass: true,
+        animateOut: true,
+        autoplay: true,
+        animateInClass: true,
         responsive: {
             0: {
                 items: 1,
