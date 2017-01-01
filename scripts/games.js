@@ -23,6 +23,7 @@ $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
     $('#raters-label').html(persianizer.reshapeNums(game.number_of_comments));
     $('#header-img').attr('src', game.small_image);
     $('header').css('background', "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('" + game.large_image + "') center no-repeat");
+    $('header').css('background-size', 'cover');
     $('#game-genre').html(game.categories.join('، '));
     starRating.starRatingElement(Math.round(game.rate), 5, $('#rate-star-div')[0]);
 
