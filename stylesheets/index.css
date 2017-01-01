@@ -92,7 +92,36 @@
     color: #f7f7f7;
 }
 
+#join-us-div {
+    height: 250pt;
+    width: 101%;
+    background: linear-gradient(rgba(88, 116, 255, 0.8), rgba(88, 116, 255, 0.8)), url('../assets/group-wallpaper.jpg') no-repeat;
+    background-size: cover;
+    padding: 40pt;
+}
 
+#join-us-div span {
+    display: block;
+    color: white;
+    padding-bottom: 20pt;
+    text-align: center;
+}
+
+#join-title {
+    font-size: 22pt;
+}
+
+#join-detail {
+    font-size: 18pt;
+}
+
+#join-btn {
+    background-color: white;
+}
+
+#join-btn:hover {
+    background-color: #b9b9b9;
+}
 
 
 
