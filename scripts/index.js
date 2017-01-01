@@ -18,7 +18,7 @@ $.get("F95/home", function (data, status) {
 
     // Main carousel
     for (let slide of homepage.slider) {
-        let item = new MainCarouselItem(slide.title, slide.large_image);
+        let item = new MainCarouselItem(slide);
         $("#main-carousel").append(item);
     }
 
@@ -27,6 +27,24 @@ $.get("F95/home", function (data, status) {
         let item = new NewGameCarouselItem(newGame.title, newGame.categories.join('، '), Math.floor(newGame.rate), newGame.small_image);
         $("#new-games-carousel").append(item);
     }
+
+    $(document).on('click', '.owl-item', function () {
+        let src = $(this).find('img').attr('src');
+        let title = $(this).find('h4').html();
+        $('#first-viewport').css('background', 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("' + src + '") center no-repeat');
+        $('#first-viewport').css('background-size', 'cover');
+        $('#details-title').html(title);
+        $('#details-content').html($(this).find('.hidden').html());
+        $('#game-pge-btn').attr('data-link', 'games.html?game=' + title);
+        $('#trailer-div').attr('href', 'games.html?game=' + title + '&tab=gallery');
+    });
+
+    $('#game-pge-btn').click(function () {
+        window.location.href = $(this).attr('data-link');
+    });
+    $(document).ready(function () {
+        $($('.owl-item')[0]).trigger("click");
+    });
 
     startCarousels();
 
@@ -45,7 +63,10 @@ $.get("F95/home", function (data, status) {
  * @return {Element}
  * @constructor
  */
-function MainCarouselItem(title, imageUrl) {
+function MainCarouselItem(slide) {
+    let title = slide.title;
+    let imageUrl = slide.large_image;
+
     let item = emranHelper.newDiv('item');
     let img = emranHelper.newElement('img');
     img.setAttribute('src', imageUrl);
@@ -55,7 +76,9 @@ function MainCarouselItem(title, imageUrl) {
     h4.innerHTML = title;
     item.appendChild(h4);
 
-    // let owlItem = emranHelper.newDiv('owl-item cloned', )
+    let hidden = $('<div class="hidden"></div>')[0];
+    hidden.innerHTML = slide.abstract;
+    item.appendChild(hidden);
 
     return item;
 }

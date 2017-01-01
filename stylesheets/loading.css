@@ -1,0 +1,6 @@
+.loading {
+    background: url('../assets/tail-spin.svg'), linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+    );
+}

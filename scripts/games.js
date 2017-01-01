@@ -27,7 +27,10 @@ $.get("F95/games/" + GAME_TITLE + '/header', function (data, status) {
     $('#game-genre').html(game.categories.join('، '));
     starRating.starRatingElement(Math.round(game.rate), 5, $('#rate-star-div')[0]);
 
-    infoTabClick();
+    if (emranHelper.getParameterByName('tab') == 'gallery')
+        galleryTabClick();
+    else
+        infoTabClick();
 });
 
 function infoTabClick() {

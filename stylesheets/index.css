@@ -2,9 +2,8 @@
  * Created by emran on 12/24/16.
  */
 .owl-item img {
-    max-height: 100pt;
+    height: 100pt;
     width: auto;
-    height: auto;
 }
 
 #first-viewport {

@@ -50,7 +50,7 @@ function CommentItem(text, date, avatarUrl) {
     let div1 = emranHelper.newDiv('col-md-10');
     item.appendChild(div1);
     let span = emranHelper.newElement('span', 'text-info small-text');
-    span.setAttribute('dir','rtl');
+    span.setAttribute('dir', 'rtl');
     span.innerHTML = text;
     div1.appendChild(span);
     let h6 = emranHelper.newElement('h6', 'text-muted');
@@ -88,7 +88,7 @@ function TutorialItem(text, date, avatarUrl) {
     let div1 = emranHelper.newDiv('col-md-10');
     item.appendChild(div1);
     let span = emranHelper.newElement('span', 'text-info small-text');
-    span.setAttribute('dir','rtl');
+    span.setAttribute('dir', 'rtl');
     span.innerHTML = text;
     div1.appendChild(span);
     let h6 = emranHelper.newElement('h6', 'text-muted');
@@ -97,7 +97,7 @@ function TutorialItem(text, date, avatarUrl) {
 
     let div2 = emranHelper.newDiv('col-md-2');
     item.appendChild(div2);
-    let img = emranHelper.newElement('img');
+    let img = emranHelper.newElement('img', 'loading');
     img.setAttribute('src', avatarUrl);
     div2.appendChild(img);
 
